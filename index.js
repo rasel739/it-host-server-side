@@ -17,6 +17,7 @@ async function run() {
     const bestServiceCollection = await database.collection("bestService");
     const bestFooterCollection = await database.collection("footerData");
     const bestDomainCollection = await database.collection("domainData");
+    const bestPricingPlanCollection = await database.collection("pricingPlan");
 
     //get best hosting collection
 
@@ -45,6 +46,13 @@ async function run() {
 
     app.get("/domainData", async (req, res) => {
       const result = await bestDomainCollection.find({}).toArray();
+
+      res.send(result);
+    });
+    //get Pricing Plan  collection
+
+    app.get("/pricingPlan", async (req, res) => {
+      const result = await bestPricingPlanCollection.find({}).toArray();
 
       res.send(result);
     });
