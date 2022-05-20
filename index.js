@@ -16,6 +16,7 @@ async function run() {
     const bestHostingCollection = await database.collection("bestHosting");
     const bestServiceCollection = await database.collection("bestService");
     const bestFooterCollection = await database.collection("footerData");
+    const bestDomainCollection = await database.collection("domainData");
 
     //get best hosting collection
 
@@ -32,10 +33,18 @@ async function run() {
       res.send(result);
     });
 
-    //get best service collection
+    //get footer collection
 
     app.get("/footer", async (req, res) => {
       const result = await bestFooterCollection.find({}).toArray();
+
+      res.send(result);
+    });
+
+    //get footer collection
+
+    app.get("/domainData", async (req, res) => {
+      const result = await bestDomainCollection.find({}).toArray();
 
       res.send(result);
     });
